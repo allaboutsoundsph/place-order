@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>All About Sounds.PH – Checkout</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: linear-gradient(135deg, #89f7fe, #66a6ff);
+      padding: 20px;
+    }
+    .container {
+      max-width: 650px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      animation: fadeIn 1s ease-in-out;
+    }
+    h2 {
+      text-align: center;
+      color: #222;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+
+    /* Progress bar */
+    .progress {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 25px;
+    }
+    .progress-step {
+      flex: 1;
+      text-align: center;
+      position: relative;
+    }
+    .progress-step::before {
+      content: attr(data-step);
+      display: inline-block;
+      width: 35px;
+      height: 35px;
+      line-height: 35px;
+      border-radius: 50%;
+      background: #ccc;
+      color: #fff;
+      font-weight: bold;
+    }
+    .progress-step.active::before {
+      background: #4CAF50;
+    }
+    .progress-step::after {
+      content: '';
+      position: absolute;
+      top: 17px;
+      left: 50%;
+      width: 100%;
+      height: 4px;
+      background: #ccc;
+      z-index: -1;
+    }
+    .progress-step:last-child::after {
+      display: none;
+    }
+    .progress-step.active + .progress-step::after {
+      background: #4CAF50;
+    }
+
+    /* Package cards */
+    .package {
+      display: grid;
+      gap: 15px;
+    }
+    .package label {
+      display: block;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      padding: 15px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .package label:hover {
+      border-color: #4CAF50;
+      background: #f7fff8;
+    }
+    .package input {
+      display: none;
+    }
+    .package input:checked + span {
+      color: #4CAF50;
+      font-weight: bold;
+    }
+
+    input[type="text"], input[type="tel"], textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+    input:focus, textarea:focus {
+      border-color: #4CAF50;
+      outline: none;
+      box-shadow: 0 0 6px rgba(76,175,80,0.3);
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #4CAF50, #2e8b57);
+      color: white;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.3s;
+    }
+    button:hover {
+      transform: translateY(-2px);
+      background: linear-gradient(135deg, #45a049, #256d45);
+    }
+
+    .form-step { display: none; }
+    .form-step.active { display: block; }
+
+    .thank-you {
+      text-align: center;
+      display: none;
+      animation: fadeIn 1s ease-in-out;
+    }
+    .thank-you h3 {
+      font-size: 1.6rem;
+      color: #4CAF50;
+    }
+    .thank-you p {
+      font-size: 1.1rem;
+      margin-top: 10px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🎶 All About Sounds.PH – Checkout</h2>
+
+    <div class="progress">
+      <div id="progress-step1" class="progress-step active" data-step="1">Choose Package</div>
+      <div id="progress-step2" class="progress-step" data-step="2">Your Details</div>
+    </div>
+
+    <form id="checkoutForm" method="POST" action="https://docs.google.com/forms/d/e/1FAIpQLSd19pHkRbB_s1WVKaMKId4pW79uSi8pWg-08QXIgw7dkCQ4Ow/formResponse" target="hidden_iframe">
+      
+      <!-- Step 1 -->
+      <div class="form-step active" id="step1">
+        <h3>Step 1: Choose Your Package 🎵</h3>
+        <div class="package">
+          <label><input type="radio" name="entry.991224144" value="Package 1 – ₱1,500" required><span>💎 Package 1 – ₱1,500</span></label>
+          <label><input type="radio" name="entry.991224144" value="Package 2 – ₱799"><span>🔥 Package 2 – ₱799</span></label>
+          <label><input type="radio" name="entry.991224144" value="Package 3 – ₱499"><span>⭐ Package 3 – ₱499</span></label>
+          <label><input type="radio" name="entry.991224144" value="Package 4 – ₱499"><span>🎧 Package 4 – ₱499</span></label>
+        </div>
+        <button type="button" class="next-btn">Next →</button>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="form-step" id="step2">
+        <h3>Step 2: Fill Your Details 📋</h3>
+        <label>Full Name *</label>
+        <input type="text" name="entry.579742713" placeholder="Your full name" required>
+
+        <label>Contact Number *</label>
+        <input type="tel" name="entry.1134943787" placeholder="09XXXXXXXXX" pattern="^09\d{9}$" required>
+
+        <label>Complete Address *</label>
+        <textarea name="entry.376477499" placeholder="Street, Barangay, City/Province" required></textarea>
+
+        <label>Nearest Landmark *</label>
+        <input type="text" name="entry.363529948" placeholder="e.g., Beside the barangay hall" required>
+
+        <button type="button" class="back-btn">← Back</button>
+        <button type="submit">Submit ✅</button>
+      </div>
+    </form>
+
+    <!-- Thank You -->
+    <div class="thank-you" id="thankYou">
+      <h3>🎉 Thank you for your order!</h3>
+      <p>You’ll be redirected to our Facebook page shortly...</p>
+    </div>
+  </div>
+
+  <iframe name="hidden_iframe" style="display:none;"></iframe>
+
+  <script>
+    const nextBtn = document.querySelector('.next-btn');
+    const backBtn = document.querySelector('.back-btn');
+    const step1 = document.getElementById('step1');
+    const step2 = document.getElementById('step2');
+    const progress1 = document.getElementById('progress-step1');
+    const progress2 = document.getElementById('progress-step2');
+    const form = document.getElementById('checkoutForm');
+    const thankYou = document.getElementById('thankYou');
+
+    nextBtn.addEventListener('click', () => {
+      step1.classList.remove('active');
+      step2.classList.add('active');
+      progress1.classList.remove('active');
+      progress2.classList.add('active');
+    });
+
+    backBtn.addEventListener('click', () => {
+      step2.classList.remove('active');
+      step1.classList.add('active');
+      progress2.classList.remove('active');
+      progress1.classList.add('active');
+    });
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      form.style.display = 'none';
+      document.querySelector('.progress').style.display = 'none';
+      thankYou.style.display = 'block';
+      setTimeout(() => {
+        window.location.href = "https://www.facebook.com/allaboutsoundsphmain";
+      }, 3000);
+      form.submit();
+    });
+  </script>
+</body>
+</html>
